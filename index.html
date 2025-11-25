@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Interview Prep</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🐍 Python Interview Prep</h1>
+            <div class="stats">
+                <div class="stat-item">
+                    <span class="stat-label">Score:</span>
+                    <span id="score">0</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">Question:</span>
+                    <span id="question-number">1</span>/<span id="total-questions">0</span>
+                </div>
+            </div>
+        </header>
+
+        <div class="main-content">
+            <div class="question-container" id="question-container">
+                <div class="question-type-badge" id="question-type-badge"></div>
+                <h2 id="question-text">Loading question...</h2>
+                
+                <!-- Multiple Choice Question -->
+                <div id="multiple-choice-container" class="hidden">
+                    <div class="options-container" id="options-container"></div>
+                    <button class="btn btn-primary" id="submit-mc-btn" disabled>Submit Answer</button>
+                </div>
+
+                <!-- Code Writing Question -->
+                <div id="code-container" class="hidden">
+                    <div class="code-editor-wrapper">
+                        <textarea id="code-editor" placeholder="Write your Python code here..."></textarea>
+                    </div>
+                    <div class="code-actions">
+                        <button class="btn btn-secondary" id="run-code-btn">Run Code</button>
+                        <button class="btn btn-primary" id="submit-code-btn" disabled>Submit Solution</button>
+                    </div>
+                    <div id="code-output" class="code-output"></div>
+                </div>
+
+                <!-- Feedback Section -->
+                <div id="feedback-container" class="hidden">
+                    <div id="feedback-message"></div>
+                    <div id="explanation" class="explanation"></div>
+                    <button class="btn btn-primary" id="next-question-btn">Next Question</button>
+                </div>
+            </div>
+
+            <div class="sidebar">
+                <div class="filter-section">
+                    <h3>Filter by Category</h3>
+                    <select id="category-filter" class="category-select">
+                        <option value="all">All Categories</option>
+                    </select>
+                </div>
+                <div class="question-selector">
+                    <h3>Question Bank</h3>
+                    <div class="question-list" id="question-list"></div>
+                </div>
+                <div class="controls">
+                    <button class="btn btn-secondary" id="reset-btn">Reset Progress</button>
+                    <button class="btn btn-secondary" id="shuffle-btn">Shuffle Questions</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/pyodide/v0.24.1/full/pyodide.js"></script>
+    <script src="questions.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
