@@ -27,4 +27,21 @@ Thumbs.db
 *.tmp
 *.temp
 
+# Documentation files (keep only README.md)
+CLONE_INSTRUCTIONS.md
+DEPLOYMENT_GUIDE.md
+GIT_COMMANDS.md
+GIT_SETUP.md
+QUESTION_LIBRARIES_GUIDE.md
+QUICK_START_GITHUB.md
+WINDOWS_QUICK_START.md
+WINDOWS_SETUP.md
+*_README.md
+!README.md
+
+# Generator scripts (not needed in repo)
+create_questions.py
+generate_*.py
+generate_*.js
+
 
