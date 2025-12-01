@@ -300,7 +300,7 @@ const vegaInterviewQuestions = {
                 { 
                     input: [], 
                     expected: 'merged_dataframe',
-                    compareFunction: (result) => result && typeof result === 'object'
+                    compareFunction: (result, expected) => result && typeof result === 'object'
                 }
             ],
             explanation: 'Use pandas merge: pd.merge(df1, df2, on=key, how="inner") or df1.merge(df2, on=key)',
@@ -342,9 +342,9 @@ const vegaInterviewQuestions = {
             question: 'Write a function `train_model(X_train, y_train)` that trains a simple linear regression model using sklearn and returns the trained model.',
             testCases: [
                 { 
-                    input: [[1], [2], [3], [4]], [2, 4, 6, 8], 
+                    input: [[[1], [2], [3], [4]], [2, 4, 6, 8]], 
                     expected: 'model_object',
-                    compareFunction: (result) => result && typeof result.predict === 'function'
+                    compareFunction: (result, expected) => result && typeof result.predict === 'function'
                 }
             ],
             explanation: 'Use LinearRegression from sklearn.linear_model: model = LinearRegression(); model.fit(X, y); return model',
@@ -400,7 +400,7 @@ const vegaInterviewQuestions = {
                 { 
                     input: [], 
                     expected: 'metrics_dict',
-                    compareFunction: (result) => result && typeof result.accuracy !== 'undefined'
+                    compareFunction: (result, expected) => result && typeof result.accuracy !== 'undefined'
                 }
             ],
             explanation: 'Use sklearn.metrics: accuracy_score(), precision_score(), recall_score() to evaluate classification model.',
@@ -500,7 +500,7 @@ const vegaInterviewQuestions = {
                 { 
                     input: ['test.jpg', 100, 100], 
                     expected: 'PIL_Image_object',
-                    compareFunction: (result) => result && result.size && result.size[0] === 100 && result.size[1] === 100
+                    compareFunction: (result, expected) => result && result.size && result.size[0] === 100 && result.size[1] === 100
                 }
             ],
             explanation: 'Use PIL Image: from PIL import Image; img = Image.open(path); resized = img.resize((width, height)); return resized',
@@ -542,7 +542,7 @@ const vegaInterviewQuestions = {
                 { 
                     input: ['test.jpg'], 
                     expected: 'grayscale_image',
-                    compareFunction: (result) => result && result.mode === 'L'
+                    compareFunction: (result, expected) => result && result.mode === 'L'
                 }
             ],
             explanation: 'Use PIL Image: img = Image.open(path); gray = img.convert("L"); return gray',
@@ -584,7 +584,7 @@ const vegaInterviewQuestions = {
                 { 
                     input: ['test.jpg'], 
                     expected: 'edge_image',
-                    compareFunction: (result) => result && typeof result !== 'undefined'
+                    compareFunction: (result, expected) => result && typeof result !== 'undefined'
                 }
             ],
             explanation: 'Use cv2: img = cv2.imread(path, 0); edges = cv2.Canny(img, 100, 200); return edges',
@@ -826,7 +826,7 @@ const vegaInterviewQuestions = {
                 { 
                     input: ['model.h5'], 
                     expected: 'model_object',
-                    compareFunction: (result) => result && typeof result !== 'undefined'
+                    compareFunction: (result, expected) => result && typeof result !== 'undefined'
                 }
             ],
             explanation: 'Use tf.keras.models.load_model() or tf.keras.applications for pre-trained models: model = tf.keras.models.load_model(path)',
@@ -961,7 +961,7 @@ const vegaInterviewQuestions = {
                 { 
                     input: [], 
                     expected: 'class_object',
-                    compareFunction: (result) => result && typeof result.load_data === 'function' && typeof result.process_data === 'function'
+                    compareFunction: (result, expected) => result && typeof result.load_data === 'function' && typeof result.process_data === 'function'
                 }
             ],
             explanation: 'Define class with methods: class DataProcessor: def load_data(self, path): return None; def process_data(self, data): return None',
@@ -1003,7 +1003,7 @@ const vegaInterviewQuestions = {
                 { 
                     input: [], 
                     expected: 'class_object',
-                    compareFunction: (result) => result && typeof result.train === 'function' && typeof result.predict === 'function'
+                    compareFunction: (result, expected) => result && typeof result.train === 'function' && typeof result.predict === 'function'
                 }
             ],
             explanation: 'class MLModel: def __init__(self, model_name): self.model_name = model_name; def train(self): return "trained"; def predict(self, data): return None',
@@ -1059,7 +1059,7 @@ const vegaInterviewQuestions = {
                 { 
                     input: [], 
                     expected: 'class_structure',
-                    compareFunction: (result) => result && typeof result !== 'undefined'
+                    compareFunction: (result, expected) => result && typeof result !== 'undefined'
                 }
             ],
             explanation: 'Use ABC: from abc import ABC, abstractmethod; class DataLoader(ABC): @abstractmethod; def load(self): pass',
@@ -1145,7 +1145,7 @@ const vegaInterviewQuestions = {
                 { 
                     input: [], 
                     expected: 'git_commands',
-                    compareFunction: (result) => result && (result.includes('branch') || result.includes('checkout') || result.includes('commit') || result.includes('push'))
+                    compareFunction: (result, expected) => result && (result.includes('branch') || result.includes('checkout') || result.includes('commit') || result.includes('push'))
                 }
             ],
             explanation: 'git checkout -b new-branch; git add .; git commit -m "message"; git push -u origin new-branch',
@@ -1301,7 +1301,7 @@ const vegaInterviewQuestions = {
                 { 
                     input: [], 
                     expected: 'SELECT query',
-                    compareFunction: (result) => result.toLowerCase().includes('join') && (result.toLowerCase().includes('count') || result.toLowerCase().includes('group'))
+                    compareFunction: (result, expected) => result.toLowerCase().includes('join') && (result.toLowerCase().includes('count') || result.toLowerCase().includes('group'))
                 }
             ],
             explanation: 'SELECT u.name, COUNT(o.order_id) FROM users u JOIN orders o ON u.user_id = o.user_id GROUP BY u.name',
@@ -1387,7 +1387,7 @@ const vegaInterviewQuestions = {
                 { 
                     input: [], 
                     expected: 'endpoint_code',
-                    compareFunction: (result) => result.includes('@app.post') && (result.includes('name') || result.includes('age'))
+                    compareFunction: (result, expected) => result.includes('@app.post') && (result.includes('name') || result.includes('age'))
                 }
             ],
             explanation: 'Use @app.post decorator, define Pydantic model or use dict, return response: @app.post("/greet") def greet(data: dict): return {"message": f"Hello {data[\'name\']}"}',
@@ -1429,7 +1429,7 @@ const vegaInterviewQuestions = {
                 { 
                     input: [], 
                     expected: 'endpoint_code',
-                    compareFunction: (result) => result.includes('@app.get') && (result.includes('limit') || result.includes('offset'))
+                    compareFunction: (result, expected) => result.includes('@app.get') && (result.includes('limit') || result.includes('offset'))
                 }
             ],
             explanation: '@app.get("/items") def get_items(limit: int = 10, offset: int = 0): return {"items": items[offset:offset+limit]}',
@@ -1471,7 +1471,7 @@ const vegaInterviewQuestions = {
                 { 
                     input: [], 
                     expected: 'endpoint_code',
-                    compareFunction: (result) => result.includes('@app.post') && (result.includes('class') || result.includes('BaseModel'))
+                    compareFunction: (result, expected) => result.includes('@app.post') && (result.includes('class') || result.includes('BaseModel'))
                 }
             ],
             explanation: 'class Item(BaseModel): name: str; price: float; @app.post("/items") def create_item(item: Item): return item',
@@ -1557,7 +1557,7 @@ const vegaInterviewQuestions = {
                 { 
                     input: [], 
                     expected: 'dockerfile_structure',
-                    compareFunction: (result) => result.includes('FROM') && (result.includes('python') || result.includes('COPY') || result.includes('RUN'))
+                    compareFunction: (result, expected) => result.includes('FROM') && (result.includes('python') || result.includes('COPY') || result.includes('RUN'))
                 }
             ],
             explanation: 'FROM python:3.9; WORKDIR /app; COPY requirements.txt .; RUN pip install -r requirements.txt; COPY . .; CMD ["uvicorn", "main:app"]',
@@ -1627,7 +1627,7 @@ const vegaInterviewQuestions = {
                 { 
                     input: [], 
                     expected: 'compose_structure',
-                    compareFunction: (result) => result.includes('services') || result.includes('postgres') || result.includes('fastapi')
+                    compareFunction: (result, expected) => result.includes('services') || result.includes('postgres') || result.includes('fastapi')
                 }
             ],
             explanation: 'version: "3"; services: app: build: .; ports: - "8000:8000"; db: image: postgres; environment: POSTGRES_PASSWORD: pass',
@@ -1685,7 +1685,7 @@ const vegaInterviewQuestions = {
                 { 
                     input: [], 
                     expected: 'plot_code',
-                    compareFunction: (result) => result.includes('plt.plot') || result.includes('matplotlib')
+                    compareFunction: (result, expected) => result.includes('plt.plot') || result.includes('matplotlib')
                 }
             ],
             explanation: 'import matplotlib.pyplot as plt; plt.plot([1,2,3,4], [1,4,9,16]); plt.show()',
@@ -1727,7 +1727,7 @@ const vegaInterviewQuestions = {
                 { 
                     input: [], 
                     expected: 'histogram_code',
-                    compareFunction: (result) => result.includes('plt.hist') || result.includes('histogram')
+                    compareFunction: (result, expected) => result.includes('plt.hist') || result.includes('histogram')
                 }
             ],
             explanation: 'import matplotlib.pyplot as plt; plt.hist([1,2,2,3,3,3,4,4,5]); plt.show()',
@@ -1769,7 +1769,7 @@ const vegaInterviewQuestions = {
                 { 
                     input: [], 
                     expected: 'bar_chart_code',
-                    compareFunction: (result) => result.includes('plt.bar') || result.includes('bar')
+                    compareFunction: (result, expected) => result.includes('plt.bar') || result.includes('bar')
                 }
             ],
             explanation: 'import matplotlib.pyplot as plt; plt.bar(["A","B","C"], [10,20,15]); plt.show()',
